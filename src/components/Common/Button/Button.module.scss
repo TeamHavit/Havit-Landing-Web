@@ -1,0 +1,57 @@
+@import '@/styles/responsive.module.scss';
+
+.Button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 14rem;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  background-color: var(--tag-white-gray-background);
+  border: 1px solid var(--white-gray-border);
+  border-radius: 5rem;
+
+  @include mobile {
+    width: 8rem;
+    padding: 0.3rem 1rem 0.3rem 0.3rem;
+    border-radius: 2rem;
+  }
+
+  &__logoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: var(--tag-ellipse-background);
+    border-radius: 3rem;
+
+    &__logo {
+      padding: 0.225rem;
+
+      @include mobile {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    @include mobile {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__nameWrapper {
+    display: flex;
+    justify-content: flex-start;
+
+    &__name {
+      font-family: 'Pretendard';
+      font-weight: 600;
+      font-size: 1.25rem;
+
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
