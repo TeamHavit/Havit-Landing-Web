@@ -5,7 +5,7 @@ import Styles from './Line.module.scss';
 
 interface Props {
   direction: 'row' | 'col';
-  classname: string;
+  classname?: string;
 }
 
 export default function Line(props: Props) {
