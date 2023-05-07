@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Main } from '@/components/Main';
+import { DetailEasy } from '@/components/DetailEasy';
 
 import styles from '@/styles/Home.module.scss';
 
@@ -34,6 +35,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Main />
+        <DetailEasy />
       </main>
     </>
   );
