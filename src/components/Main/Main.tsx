@@ -35,6 +35,7 @@ export default function Main(): JSX.Element {
         className={Styles.Main__logo}
         src={textLogo}
         alt="havit text logo"
+        priority
       />
       {isPC ? (
         <div className={Styles.Main__introText}>
