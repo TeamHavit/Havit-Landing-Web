@@ -66,12 +66,14 @@ export default function Main(): JSX.Element {
           className={Styles.Main__image}
           src={mockupPCSrc}
           alt="havit mockup main"
+          priority
         />
       ) : (
         <Image
           className={Styles.Main__image}
           src={mockupMobileSrc}
           alt="havit mockup main mobile"
+          priority
         />
       )}
     </div>
