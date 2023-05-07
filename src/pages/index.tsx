@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Havit</title>
+        <title>HAVIT | 기억하고 싶은 모든 콘텐츠를 내 손안에</title>
         <meta
           name="description"
           content="기억하고 싶은 모든 콘텐츠를 내 손안에, HAVIT"
