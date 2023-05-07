@@ -1,0 +1,79 @@
+@import '@/styles/responsive.module.scss';
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem 0 2rem;
+  width: 100%;
+  color: var(--white);
+  background: var(--main-background);
+  font-family: 'Pretendard';
+
+  @include mobile {
+    height: 38rem;
+  }
+
+  &__title {
+    margin-top: 3rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -0.06em;
+    line-height: 72px;
+
+    @include mobile {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 29px;
+    }
+  }
+
+  &__logo {
+    margin-top: 0.5rem;
+    width: 18rem;
+    height: 3rem;
+
+    @include mobile {
+      margin-top: 1rem;
+      width: 9rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__introText {
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--white-gray);
+
+    &--strong {
+      color: var(--white);
+      font-weight: 500;
+
+      @include mobile {
+        font-size: 0.8rem;
+      }
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &__store {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  &__image {
+    height: 35rem;
+    padding-right: 5rem;
+
+    @include mobile {
+      padding: 0;
+    }
+  }
+}

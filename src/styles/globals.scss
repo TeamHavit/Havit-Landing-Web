@@ -9,6 +9,13 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
+  --white: #fff;
+  --white-gray: rgba(255, 255, 255, 0.7);
+  --white-gray-border: rgba(255, 255, 255, 0.4);
+
+  --tag-white-gray-background: rgba(255, 255, 255, 0.19);
+  --tag-ellipse-background: rgba(255, 255, 255, 0.3);
+
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -21,6 +28,13 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
+
+  --main-background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(180deg, #292929 0%, #6359bf 100%);
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
