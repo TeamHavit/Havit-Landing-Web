@@ -26,6 +26,7 @@ export default function Button(props: Props) {
           className={Styles.Button__logoWrapper__logo}
           src={imageSrc}
           alt="store logo"
+          priority
         />
       </div>
       <div className={Styles.Button__nameWrapper}>

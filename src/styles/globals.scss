@@ -13,21 +13,10 @@
   --white-gray: rgba(255, 255, 255, 0.7);
   --white-gray-border: rgba(255, 255, 255, 0.4);
 
+  --text-gray: #646464;
+
   --tag-white-gray-background: rgba(255, 255, 255, 0.19);
   --tag-ellipse-background: rgba(255, 255, 255, 0.3);
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
 
   --main-background: linear-gradient(
       0deg,
@@ -36,22 +25,7 @@
     ),
     linear-gradient(180deg, #292929 0%, #6359bf 100%);
 
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --gray-background: #fafafa;
 }
 
 @media (prefers-color-scheme: dark) {
