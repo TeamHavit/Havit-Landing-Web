@@ -1,0 +1,64 @@
+@import '@/styles/responsive.module.scss';
+
+.DetailCheck {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  width: 100%;
+  height: 40rem;
+  background-color: var(--gray-background);
+  font-family: 'Pretendard';
+
+  @include tablet {
+    height: 60rem;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+
+    @include tablet {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    @include mobile {
+      margin-top: 5rem;
+      margin-bottom: 0.625rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__detail {
+    margin-bottom: 5rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-gray);
+    text-align: center;
+
+    & > div {
+      margin-bottom: 0.5rem;
+    }
+
+    @include tablet {
+      margin-bottom: 3rem;
+      font-size: 1.125rem;
+    }
+
+    @include mobile {
+      font-size: 0.875rem;
+    }
+  }
+
+  &__image {
+    width: 65vw;
+
+    @include tablet {
+      width: 75vw;
+    }
+  }
+}
