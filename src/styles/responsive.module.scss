@@ -6,11 +6,14 @@
   }
 }
 
-@mixin mobile {
+@mixin tablet {
   @media (min-width: #{$mobile}) and (max-width: #{$pc - 1px}) {
     @content;
   }
-  @media (max-width: #{$mobile - 1px}) {
+}
+
+@mixin mobile {
+  @media (max-width: #{$tablet - 1px}) {
     @content;
   }
 }
