@@ -18,7 +18,7 @@ export default function Main(): JSX.Element {
   const { width } = useWindowSize();
 
   const MockupImage = () => {
-    if (width > RESPONSIVE_VARIABLE['pc']) {
+    if (width >= RESPONSIVE_VARIABLE['pc']) {
       return (
         <div className={Styles.Main__image}>
           <Image
@@ -31,7 +31,7 @@ export default function Main(): JSX.Element {
       );
     } else if (
       width >= RESPONSIVE_VARIABLE['tablet'] &&
-      width <= RESPONSIVE_VARIABLE['pc']
+      width < RESPONSIVE_VARIABLE['pc']
     ) {
       return (
         <div className={Styles.Main__image}>
@@ -43,18 +43,17 @@ export default function Main(): JSX.Element {
           />
         </div>
       );
-    } else {
-      return (
-        <div className={Styles.Main__image}>
-          <Image
-            src={mockupMobileSrc}
-            alt="havit mockup main"
-            style={{ width: 'auto', height: '100%' }}
-            priority
-          />
-        </div>
-      );
     }
+    return (
+      <div className={Styles.Main__image}>
+        <Image
+          src={mockupMobileSrc}
+          alt="havit mockup main"
+          style={{ width: 'auto', height: '100%' }}
+          priority
+        />
+      </div>
+    );
   };
 
   return (
