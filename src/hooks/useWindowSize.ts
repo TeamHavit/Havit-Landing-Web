@@ -17,7 +17,7 @@ export default function useWindowSize() {
 
       window.addEventListener('resize', handleResize);
       handleResize();
-      return () => window.removeEventListener('resize', handleResize); // 클린업
+      return () => window.removeEventListener('resize', handleResize);
     } else {
       return;
     }
