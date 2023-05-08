@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import onbardingSrc from '../../../public/static/images/onboarding.svg';
+import onbardingSrc from '../../../public/static/images/onboarding.webp';
 
 import Styles from './DetailEasy.module.scss';
 
@@ -23,12 +23,17 @@ export default function DetailEasy(): JSX.Element {
           </div>
         </div>
       </div>
-      <Image
-        className={Styles.DetailEasy__image}
-        src={onbardingSrc}
-        alt="onboarding image"
-        priority
-      />
+      <div className={Styles.DetailEasy__imageWrapper}>
+        <div className={Styles.DetailEasy__imageWrapper__image}>
+          <Image
+            src={onbardingSrc}
+            alt="onboarding image"
+            placeholder="blur"
+            style={{ width: '100%', height: 'auto' }}
+            priority
+          />
+        </div>
+      </div>
     </div>
   );
 }

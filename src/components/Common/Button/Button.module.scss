@@ -20,17 +20,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: var(--tag-ellipse-background);
     border-radius: 3rem;
 
     &__logo {
-      padding: 0.225rem;
+      height: auto;
 
-      @include mobile {
+      &--google {
         width: 1.5rem;
-        height: 1.5rem;
+
+        @include mobile {
+          width: 0.9rem;
+        }
+      }
+
+      &--apple {
+        width: 1.35rem;
+
+        @include mobile {
+          width: 0.75rem;
+        }
       }
     }
 

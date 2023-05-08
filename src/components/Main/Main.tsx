@@ -1,27 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { isDesktop } from 'react-device-detect';
 
 import { Button } from '@/components/Common/Button';
+import useWindowSize from '@/hooks/useWindowSize';
+import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
 
-import textLogo from '../../../public/static/images/text-logo.svg';
-import playstoreLogo from '../../../public/static/images/playstore.svg';
-import appstoreLogo from '../../../public/static/images/appstore.svg';
-import mockupPCSrc from '../../../public/static/images/mockup-main-lg.svg';
-import mockupMobileSrc from '../../../public/static/images/mockup-main.svg';
+import textLogo from '../../../public/static/images/text-logo.webp';
+import playstoreLogo from '../../../public/static/images/playstore.webp';
+import appstoreLogo from '../../../public/static/images/appstore.webp';
+import mockupPCSrc from '../../../public/static/images/mockup-main-lg.webp';
+import mockupTabletSrc from '../../../public/static/images/mockup-main-md.webp';
+import mockupMobileSrc from '../../../public/static/images/mockup-main-sm.webp';
 
 import Styles from './Main.module.scss';
 
 export default function Main(): JSX.Element {
-  const [isPC, setIsPC] = useState(true);
+  const { width } = useWindowSize();
 
-  useEffect(() => {
-    if (!isDesktop) setIsPC(false);
-  }, []);
+  const MockupImage = () => {
+    if (width > RESPONSIVE_VARIABLE['pc']) {
+      return (
+        <div className={Styles.Main__image}>
+          <Image
+            src={mockupPCSrc}
+            alt="havit mockup pc main"
+            style={{ width: 'auto', height: '100%' }}
+            priority
+          />
+        </div>
+      );
+    } else if (
+      width >= RESPONSIVE_VARIABLE['tablet'] &&
+      width <= RESPONSIVE_VARIABLE['pc']
+    ) {
+      return (
+        <div className={Styles.Main__image}>
+          <Image
+            src={mockupTabletSrc}
+            alt="havit mockup tablet main"
+            style={{ width: 'auto', height: '100%' }}
+            priority
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className={Styles.Main__image}>
+          <Image
+            src={mockupMobileSrc}
+            alt="havit mockup main"
+            style={{ width: 'auto', height: '100%' }}
+            priority
+          />
+        </div>
+      );
+    }
+  };
 
   return (
     <div className={Styles.Main}>
-      {isPC ? (
+      {width > RESPONSIVE_VARIABLE['tablet'] ? (
         <div className={Styles.Main__title}>
           기억하고 싶은 모든 콘텐츠를 내 손안에
         </div>
@@ -37,7 +75,7 @@ export default function Main(): JSX.Element {
         alt="havit text logo"
         priority
       />
-      {isPC ? (
+      {width > RESPONSIVE_VARIABLE['tablet'] ? (
         <div className={Styles.Main__introText}>
           그때 봤던 그 콘텐츠 어디있지?&nbsp;
           <span className={Styles['Main__introText--strong']}>
@@ -62,21 +100,7 @@ export default function Main(): JSX.Element {
           imageSrc={appstoreLogo}
         />
       </div>
-      {isPC ? (
-        <Image
-          className={Styles.Main__image}
-          src={mockupPCSrc}
-          alt="havit mockup main"
-          priority
-        />
-      ) : (
-        <Image
-          className={Styles.Main__image}
-          src={mockupMobileSrc}
-          alt="havit mockup main mobile"
-          priority
-        />
-      )}
+      <MockupImage />
     </div>
   );
 }
