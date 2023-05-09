@@ -19,10 +19,10 @@
     margin-bottom: 1rem;
     font-size: 2.5rem;
     font-weight: 700;
+    letter-spacing: -0.06em;
     text-align: center;
 
     @include tablet {
-      margin-bottom: 1rem;
       font-size: 2rem;
     }
 
@@ -58,7 +58,11 @@
     width: 65vw;
 
     @include tablet {
-      width: 75vw;
+      width: 70vw;
+    }
+
+    @include mobile {
+      width: 80vw;
     }
   }
 }

@@ -17,44 +17,12 @@ import Styles from './Main.module.scss';
 export default function Main(): JSX.Element {
   const { width } = useWindowSize();
 
-  const MockupImage = () => {
-    if (width >= RESPONSIVE_VARIABLE['pc']) {
-      return (
-        <div className={Styles.Main__image}>
-          <Image
-            src={mockupPCSrc}
-            alt="havit mockup pc main"
-            style={{ width: 'auto', height: '100%' }}
-            priority
-          />
-        </div>
-      );
-    } else if (
-      width >= RESPONSIVE_VARIABLE['tablet'] &&
-      width < RESPONSIVE_VARIABLE['pc']
-    ) {
-      return (
-        <div className={Styles.Main__image}>
-          <Image
-            src={mockupTabletSrc}
-            alt="havit mockup tablet main"
-            style={{ width: 'auto', height: '100%' }}
-            priority
-          />
-        </div>
-      );
-    }
-    return (
-      <div className={Styles.Main__image}>
-        <Image
-          src={mockupMobileSrc}
-          alt="havit mockup main"
-          style={{ width: 'auto', height: '100%' }}
-          priority
-        />
-      </div>
-    );
-  };
+  const mockupSrc =
+    width >= RESPONSIVE_VARIABLE['pc']
+      ? mockupPCSrc
+      : width < RESPONSIVE_VARIABLE['tablet']
+      ? mockupMobileSrc
+      : mockupTabletSrc;
 
   return (
     <div className={Styles.Main}>
@@ -99,7 +67,14 @@ export default function Main(): JSX.Element {
           imageSrc={appstoreLogo}
         />
       </div>
-      <MockupImage />
+      <div className={Styles.Main__image}>
+        <Image
+          src={mockupSrc}
+          alt="havit mockup main"
+          style={{ width: 'auto', height: '100%' }}
+          priority
+        />
+      </div>
     </div>
   );
 }
