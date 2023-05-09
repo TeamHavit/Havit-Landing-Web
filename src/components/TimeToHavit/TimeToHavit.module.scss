@@ -1,0 +1,82 @@
+@import '@/styles/responsive.module.scss';
+
+.TimeToHavit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 2rem 0 2rem;
+  background: var(--purple-background);
+  font-family: 'Pretendard';
+
+  @include mobile {
+    align-items: flex-start;
+  }
+
+  &__image {
+    margin-top: 5rem;
+    width: 50vw;
+
+    @include tablet {
+      width: 70vw;
+    }
+
+    @include mobile {
+      width: 90vw;
+    }
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    text-align: center;
+    color: var(--white);
+
+    @include tablet {
+      font-size: 2rem;
+    }
+
+    @include mobile {
+      text-align: start;
+      font-size: 1.75rem;
+    }
+  }
+
+  &__detail {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--white);
+
+    @include tablet {
+      font-size: 1.125rem;
+    }
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: minmax(100px, max-content) 1fr;
+      align-items: center;
+      width: 100%;
+      font-size: 0.75rem;
+    }
+  }
+
+  &__line {
+    margin-left: 0.5rem;
+  }
+
+  &__store {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 8rem;
+    color: var(--white);
+    gap: 1rem;
+
+    @include mobile {
+      margin-bottom: 5rem;
+    }
+  }
+}

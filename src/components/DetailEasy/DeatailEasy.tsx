@@ -28,7 +28,6 @@ export default function DetailEasy(): JSX.Element {
           <Image
             src={onbardingSrc}
             alt="onboarding image"
-            placeholder="blur"
             style={{ width: '100%', height: 'auto' }}
             priority
           />
