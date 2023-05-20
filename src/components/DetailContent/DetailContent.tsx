@@ -7,7 +7,8 @@ import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
 import mockupLgSrc from '../../../public/static/images/mockup-content-list-pc.webp';
 import mockupMdSrc from '../../../public/static/images/mockup-content-list-md.webp';
 import mockupSmSrc from '../../../public/static/images/mockup-content-list-sm.webp';
-import backImageSrc from '../../../public/static/images/blur-bg-image.webp';
+import blurBackImageLgSrc from '../../../public/static/images/blur-bg-image.webp';
+import blurBackImageSmSrc from '../../../public/static/images/blur-bg-image-sm.webp';
 
 import Styles from './DetailContent.module.scss';
 
@@ -20,6 +21,11 @@ export default function DetailContent(): JSX.Element {
       : width < RESPONSIVE_VARIABLE['tablet']
       ? mockupSmSrc
       : mockupMdSrc;
+
+  const blurBackImageSrc =
+    width <= RESPONSIVE_VARIABLE['tablet']
+      ? blurBackImageSmSrc
+      : blurBackImageLgSrc;
 
   const TitleText = (): JSX.Element => {
     return width >= RESPONSIVE_VARIABLE['pc'] ? (
@@ -67,7 +73,7 @@ export default function DetailContent(): JSX.Element {
       </div>
       <div className={Styles.DetailContent__backgroundImage}>
         <Image
-          src={backImageSrc}
+          src={blurBackImageSrc}
           alt="background blur image"
           style={{ width: '105%', height: 'auto' }}
         />
