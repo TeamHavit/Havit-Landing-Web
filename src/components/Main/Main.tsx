@@ -71,7 +71,7 @@ export default function Main(): JSX.Element {
         <Image
           src={mockupSrc}
           alt="havit mockup main"
-          style={{ width: 'auto', height: '100%' }}
+          style={{ width: 'auto', height: 'auto' }}
           priority
         />
       </div>
