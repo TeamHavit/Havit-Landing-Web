@@ -57,11 +57,11 @@
     &__mainImage {
       position: relative;
       height: 37rem;
-      left: 5rem;
+      left: 5vw;
       z-index: 1;
 
       @include tablet {
-        left: 10rem;
+        left: 15vw;
         height: 40rem;
         top: 5rem;
       }
@@ -75,7 +75,7 @@
 
     &__textWrapper {
       @include tablet {
-        margin-left: 55%;
+        margin-left: 50vw;
       }
 
       @include mobile {
@@ -128,9 +128,10 @@
   &__backgroundImage {
     position: absolute;
     margin-bottom: 10rem;
-    left: 40vw;
+    right: 30vw;
     width: 25rem;
     z-index: 0;
+    overflow-x: hidden;
 
     @include tablet {
       margin-bottom: 5rem;
@@ -138,9 +139,9 @@
     }
 
     @include mobile {
+      width: 15rem;
       margin-bottom: 5rem;
-      left: 45vw;
-      width: 20rem;
+      right: 0;
     }
   }
 }
