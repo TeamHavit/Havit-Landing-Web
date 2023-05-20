@@ -19,7 +19,7 @@ export default function DetailCheck(): JSX.Element {
     if (width >= RESPONSIVE_VARIABLE['pc']) {
       return (
         <div className={Styles.DetailCheck__title}>
-          잊기 쉬운 콘텐츠, 모두 확인 할 수 있도록
+          잊기 쉬운 콘텐츠, 모두 확인 할 수 있도록
         </div>
       );
     }

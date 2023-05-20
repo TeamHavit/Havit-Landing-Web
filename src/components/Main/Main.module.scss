@@ -6,12 +6,17 @@
   align-items: center;
   padding: 2rem 2rem 0 2rem;
   width: 100%;
+  height: 71.25rem;
   color: var(--white);
   background: var(--main-background);
   font-family: 'Pretendard';
 
+  @include tablet {
+    height: 46.5rem;
+  }
+
   @include mobile {
-    height: 38rem;
+    height: 37.5rem;
   }
 
   &__title {
@@ -83,10 +88,10 @@
   }
 
   &__image {
-    height: 35rem;
     padding-right: 5rem;
 
     @include tablet {
+      padding: 0;
     }
 
     @include mobile {
