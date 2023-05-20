@@ -27,6 +27,7 @@
     text-align: center;
 
     @include tablet {
+      margin-top: 5rem;
       font-size: 2rem;
     }
 
@@ -59,7 +60,7 @@
   }
 
   &__image {
-    width: 65vw;
+    width: 55vw;
 
     @include tablet {
       width: 70vw;
