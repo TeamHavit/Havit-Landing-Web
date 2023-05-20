@@ -16,6 +16,7 @@
   --white-gray-border: rgba(255, 255, 255, 0.4);
 
   --text-gray: #646464;
+  --text-white-gray: #d2d2d2;
 
   --tag-white-gray-background: rgba(255, 255, 255, 0.19);
   --tag-ellipse-background: rgba(255, 255, 255, 0.3);
@@ -27,8 +28,13 @@
     ),
     linear-gradient(180deg, #292929 0%, #6359bf 100%);
   --purple-background: linear-gradient(90.95deg, #8578ff 2.24%, #6a5bff 100%);
-
+  --black-background: #242326;
   --gray-background: #fafafa;
+  --blur-black-background: linear-gradient(
+    180deg,
+    rgba(36, 35, 38, 0) 0%,
+    #242326 64.98%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
