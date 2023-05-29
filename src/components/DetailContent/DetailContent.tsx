@@ -1,8 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
-import useWindowSize from '@/hooks/useWindowSize';
-import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
+import withWindowSize, { DeviceProps } from '@/hocs/withWindowSize';
 
 import mockupLgSrc from '../../../public/static/images/mockup-content-list-pc.webp';
 import mockupMdSrc from '../../../public/static/images/mockup-content-list-md.webp';
@@ -12,23 +11,19 @@ import blurBackImageSmSrc from '../../../public/static/images/blur-bg-image-sm.w
 
 import Styles from './DetailContent.module.scss';
 
-export default function DetailContent(): JSX.Element {
-  const { width } = useWindowSize();
+function DetailContent(props: DeviceProps): JSX.Element {
+  const { isPc, isTablet, isMobile } = props;
 
-  const mockupSrc =
-    width >= RESPONSIVE_VARIABLE['pc']
-      ? mockupLgSrc
-      : width < RESPONSIVE_VARIABLE['tablet']
-      ? mockupSmSrc
-      : mockupMdSrc;
+  const mockupSrc = (): StaticImageData => {
+    if (isPc) return mockupLgSrc;
+    else if (isTablet) return mockupMdSrc;
+    else return mockupSmSrc;
+  };
 
-  const blurBackImageSrc =
-    width <= RESPONSIVE_VARIABLE['tablet']
-      ? blurBackImageSmSrc
-      : blurBackImageLgSrc;
+  const blurBackImageSrc = isMobile ? blurBackImageSmSrc : blurBackImageLgSrc;
 
   const TitleText = (): JSX.Element => {
-    return width >= RESPONSIVE_VARIABLE['pc'] ? (
+    return isPc ? (
       <span>
         저장한 콘텐츠를 <br /> 한눈에
       </span>
@@ -38,7 +33,7 @@ export default function DetailContent(): JSX.Element {
   };
 
   const DetailText = (): JSX.Element => {
-    return width >= RESPONSIVE_VARIABLE['pc'] ? (
+    return isPc ? (
       <>
         <div>복잡한 콘텐츠 홍수 속에서</div>
         <div>내가 저장하고 읽은 콘텐츠 현황을</div>
@@ -57,7 +52,7 @@ export default function DetailContent(): JSX.Element {
       <div className={Styles.DetailContent__mainWrapper}>
         <div className={Styles.DetailContent__mainWrapper__mainImage}>
           <Image
-            src={mockupSrc}
+            src={mockupSrc()}
             alt="havit mockup content list"
             style={{ width: 'auto', height: '100%' }}
           />
@@ -78,9 +73,9 @@ export default function DetailContent(): JSX.Element {
           style={{ width: '105%', height: 'auto' }}
         />
       </div>
-      {width >= RESPONSIVE_VARIABLE['pc'] && (
-        <div className={Styles.DetailContent__blur} />
-      )}
+      {isPc && <div className={Styles.DetailContent__blur} />}
     </div>
   );
 }
+
+export default withWindowSize(DetailContent);
