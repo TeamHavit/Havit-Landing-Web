@@ -60,6 +60,10 @@
       left: 5vw;
       z-index: 1;
 
+      @include wideDesktop {
+        left: 15vw;
+      }
+
       @include tablet {
         left: 15vw;
         height: 40rem;
@@ -132,6 +136,10 @@
     width: 25rem;
     z-index: 0;
     overflow-x: hidden;
+
+    @include wideDesktop {
+      right: 35vw;
+    }
 
     @include tablet {
       margin-bottom: 5rem;

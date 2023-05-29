@@ -1,7 +1,13 @@
 @import './variable.module.scss';
 
+@mixin wideDesktop {
+  @media (min-width: #{$widePc}) {
+    @content;
+  }
+}
+
 @mixin desktop {
-  @media (min-width: #{$pc}) {
+  @media (min-width: #{$pc}) and (max-width: #{$widePc - 1px}) {
     @content;
   }
 }
