@@ -1,39 +1,37 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
+import withWindowSize, { DeviceProps } from '@/hocs/withWindowSize';
 import { Button } from '@/components/Common/Button';
-import useWindowSize from '@/hooks/useWindowSize';
-import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
 
 import textLogo from '../../../public/static/images/text-logo.webp';
 import playstoreLogo from '../../../public/static/images/playstore.webp';
 import appstoreLogo from '../../../public/static/images/appstore.webp';
-import mockupPCSrc from '../../../public/static/images/mockup-main-lg.webp';
-import mockupTabletSrc from '../../../public/static/images/mockup-main-md.webp';
-import mockupMobileSrc from '../../../public/static/images/mockup-main-sm.webp';
+import mockupLgSrc from '../../../public/static/images/mockup-main-lg.webp';
+import mockupMdSrc from '../../../public/static/images/mockup-main-md.webp';
+import mockupSmSrc from '../../../public/static/images/mockup-main-sm.webp';
 
 import Styles from './Main.module.scss';
 
-export default function Main(): JSX.Element {
-  const { width } = useWindowSize();
+function Main(props: DeviceProps): JSX.Element {
+  const { isPc, isTablet, isMobile } = props;
 
-  const mockupSrc =
-    width >= RESPONSIVE_VARIABLE['pc']
-      ? mockupPCSrc
-      : width < RESPONSIVE_VARIABLE['tablet']
-      ? mockupMobileSrc
-      : mockupTabletSrc;
+  const mockupSrc = (): StaticImageData => {
+    if (isPc) return mockupLgSrc;
+    else if (isTablet) return mockupMdSrc;
+    else return mockupSmSrc;
+  };
 
   return (
     <div className={Styles.Main}>
-      {width > RESPONSIVE_VARIABLE['tablet'] ? (
-        <div className={Styles.Main__title}>
-          기억하고 싶은 모든 콘텐츠를 내 손안에
-        </div>
-      ) : (
+      {isMobile ? (
         <div className={Styles.Main__title}>
           <div>기억하고 싶은</div>
           <div>모든 콘텐츠를 내 손안에</div>
+        </div>
+      ) : (
+        <div className={Styles.Main__title}>
+          기억하고 싶은 모든 콘텐츠를 내 손안에
         </div>
       )}
       <Image
@@ -42,14 +40,7 @@ export default function Main(): JSX.Element {
         alt="havit text logo"
         priority
       />
-      {width > RESPONSIVE_VARIABLE['tablet'] ? (
-        <div className={Styles.Main__introText}>
-          그때 봤던 그 콘텐츠 어디있지?&nbsp;
-          <span className={Styles['Main__introText--strong']}>
-            콘텐츠 저장, 해빗에서 쉽고 간편하게
-          </span>
-        </div>
-      ) : (
+      {isMobile ? (
         <>
           <div className={Styles.Main__introText}>
             그때 봤던 그 콘텐츠 어디있지?
@@ -58,6 +49,13 @@ export default function Main(): JSX.Element {
             콘텐츠 저장, 해빗에서 쉽고 간편하게
           </div>
         </>
+      ) : (
+        <div className={Styles.Main__introText}>
+          그때 봤던 그 콘텐츠 어디있지?&nbsp;
+          <span className={Styles['Main__introText--strong']}>
+            콘텐츠 저장, 해빗에서 쉽고 간편하게
+          </span>
+        </div>
       )}
       <div className={Styles.Main__store}>
         <Button type="google" text="Google Play" imageSrc={playstoreLogo} />
@@ -69,7 +67,7 @@ export default function Main(): JSX.Element {
       </div>
       <div className={Styles.Main__image}>
         <Image
-          src={mockupSrc}
+          src={mockupSrc()}
           alt="havit mockup main"
           style={{ width: 'auto', height: 'auto' }}
           priority
@@ -78,3 +76,5 @@ export default function Main(): JSX.Element {
     </div>
   );
 }
+
+export default withWindowSize(Main);

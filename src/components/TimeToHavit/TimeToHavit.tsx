@@ -1,34 +1,32 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
+import withWindowSize, { DeviceProps } from '@/hocs/withWindowSize';
 import { Button } from '@/components/Common/Button';
-import useWindowSize from '@/hooks/useWindowSize';
-import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
 
-import mockupLargeSrc from '../../../public/static/images/mockup-phone-lg.webp';
-import mockupMideumSrc from '../../../public/static/images/mockup-phone-md.webp';
-import mockupSmallSrc from '../../../public/static/images/mockup-phone-sm.webp';
+import mockupLgSrc from '../../../public/static/images/mockup-phone-lg.webp';
+import mockupMdSrc from '../../../public/static/images/mockup-phone-md.webp';
+import mockupSmSrc from '../../../public/static/images/mockup-phone-sm.webp';
 import playstoreLogo from '../../../public/static/images/playstore.webp';
 import appstoreLogo from '../../../public/static/images/appstore.webp';
 
 import Styles from './TimeToHavit.module.scss';
 import { Line } from '../Common/Line';
 
-export default function TimeToHavit(): JSX.Element {
-  const { width } = useWindowSize();
+function TimeToHavit(props: DeviceProps): JSX.Element {
+  const { isPc, isTablet, isMobile } = props;
 
-  const mockupSrc =
-    width >= RESPONSIVE_VARIABLE['pc']
-      ? mockupLargeSrc
-      : width < RESPONSIVE_VARIABLE['tablet']
-      ? mockupSmallSrc
-      : mockupMideumSrc;
+  const mockupSrc = (): StaticImageData => {
+    if (isPc) return mockupLgSrc;
+    else if (isTablet) return mockupMdSrc;
+    else return mockupSmSrc;
+  };
 
   return (
     <div className={Styles.TimeToHavit}>
       <div className={Styles.TimeToHavit__image}>
         <Image
-          src={mockupSrc}
+          src={mockupSrc()}
           alt="mockup phone"
           style={{ width: '100%', height: 'auto' }}
         />
@@ -39,7 +37,7 @@ export default function TimeToHavit(): JSX.Element {
       </div>
       <div className={Styles.TimeToHavit__detail}>
         <div>지금 바로 콘텐츠를 아카이빙하세요</div>
-        {width < RESPONSIVE_VARIABLE['tablet'] && (
+        {isMobile && (
           <Line classname={Styles.TimeToHavit__line} direction="row" />
         )}
       </div>
@@ -54,3 +52,5 @@ export default function TimeToHavit(): JSX.Element {
     </div>
   );
 }
+
+export default withWindowSize(TimeToHavit);

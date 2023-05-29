@@ -1,22 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 
-import useWindowSize from '@/hooks/useWindowSize';
-import { RESPONSIVE_VARIABLE } from '@/constants/objects/responsive';
+import withWindowSize, { DeviceProps } from '@/hocs/withWindowSize';
 
 import checkImageLgSrc from '../../../public/static/images/check.webp';
 import checkImageSmSrc from '../../../public/static/images/check-md.webp';
 
 import Styles from './DetailCheck.module.scss';
 
-export default function DetailCheck(): JSX.Element {
-  const { width } = useWindowSize();
+function DetailCheck(props: DeviceProps): JSX.Element {
+  const { isPc } = props;
 
-  const checkImageSrc =
-    width >= RESPONSIVE_VARIABLE['pc'] ? checkImageLgSrc : checkImageSmSrc;
+  const checkImageSrc = isPc ? checkImageLgSrc : checkImageSmSrc;
 
   const Title = (): JSX.Element => {
-    if (width >= RESPONSIVE_VARIABLE['pc']) {
+    if (isPc) {
       return (
         <div className={Styles.DetailCheck__title}>
           잊기 쉬운 콘텐츠, 모두 확인 할 수 있도록
@@ -49,3 +47,5 @@ export default function DetailCheck(): JSX.Element {
     </div>
   );
 }
+
+export default withWindowSize(DetailCheck);
