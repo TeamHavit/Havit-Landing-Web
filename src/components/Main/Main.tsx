@@ -69,7 +69,7 @@ function Main(props: DeviceProps): JSX.Element {
         <Image
           src={mockupSrc()}
           alt="havit mockup main"
-          style={{ width: 'auto', height: 'auto' }}
+          style={{ width: '100%', height: 'auto' }}
           priority
         />
       </div>

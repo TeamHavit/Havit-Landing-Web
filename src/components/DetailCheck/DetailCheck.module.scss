@@ -62,6 +62,10 @@
   &__image {
     width: 55vw;
 
+    @include wideDesktop {
+      width: 45vw;
+    }
+
     @include tablet {
       width: 70vw;
     }
