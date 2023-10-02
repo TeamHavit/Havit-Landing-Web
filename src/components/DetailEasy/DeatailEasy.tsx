@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import onbardingSrc from '../../../public/static/images/onboarding.webp';
+import onboardingSrc from '../../../public/static/images/onboarding.webp';
 
 import Styles from './DetailEasy.module.scss';
 
@@ -26,7 +26,7 @@ export default function DetailEasy(): JSX.Element {
       <div className={Styles.DetailEasy__imageWrapper}>
         <div className={Styles.DetailEasy__imageWrapper__image}>
           <Image
-            src={onbardingSrc}
+            src={onboardingSrc}
             alt="onboarding image"
             style={{ width: '100%', height: 'auto' }}
             priority
